@@ -1,17 +1,9 @@
 import React, { useRef } from 'react'
-import trousers from '../assets/Trousers.jpg'
-import Accessories from '../assets/Accessories.jpg'
-import Blazers from '../assets/Blazers.jpg'
-import shoes from '../assets/shoes.jpg'
-import bg_img from '../assets/bg_img.jpeg'
 import { categories } from '../assets/assets'
 import { useAppContext } from '../context/AppContext'
 
 function Categories() {
-
   const { navigate } = useAppContext()
-
-
   const scrollRef = useRef(null);
 
   const scrollLeft = () => {
@@ -38,39 +30,42 @@ function Categories() {
 
         {/* Scrollable Container */}
         <div
-          className="d-flex overflow-hidden"
+          className="d-flex overflow-x-auto"
           ref={scrollRef}
           style={{
             scrollBehavior: "smooth",
             gap: "1rem",
+            paddingBottom: "1rem",
           }}
         >
           {/* Category Items */}
-          {
-            categories.map((category, index) => (
-              <div
-                key={index}
-                className="category-card text-center p-3 flex-shrink-0 cursor-pointer"
-                style={{ width: "25%" }} // <-- 4 cards per screen
-                onClick={() => {
-                  navigate(`/products/${category.path.toLowerCase()}`)
-                  scrollTo(0, 0)
+          {categories.map((category, index) => (
+            <div
+              key={index}
+              className="category-card text-center p-3 flex-shrink-0 cursor-pointer"
+              style={{
+                width: "80%",  // mobile
+                maxWidth: "300px",  // prevent too large on wide screens
+              }}
+              onClick={() => {
+                navigate(`/products/${category.path.toLowerCase()}`)
+                scrollTo(0, 0)
+              }}
+            >
+              <img
+                src={category.image}
+                alt={category.text}
+                className="category-img mb-2"
+                style={{
+                  height: "250px",
+                  width: "100%",
+                  objectFit: "cover",
+                  borderRadius: "10px",
                 }}
-              >
-                <img
-                  src={category.image}
-                  alt={category.text}
-                  className="category-img mb-2"
-                  style={{
-                    height: "250px",
-                    width: "100%",
-                    objectFit: "cover",
-                    borderRadius: "10px",
-                  }}
-                />
-                <h6 className="fw-semibold">{category.text}</h6>
-              </div>
-            ))}
+              />
+              <h6 className="fw-semibold">{category.text}</h6>
+            </div>
+          ))}
         </div>
 
         {/* Right Arrow */}
