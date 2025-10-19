@@ -11,7 +11,6 @@ import AllProducts from './pages/AllProducts'
 import ProductCategory from './pages/ProductCategory'
 import ProductDetails from './pages/ProductDetails'
 import Cart from './pages/Cart'
-import AddAddress from './pages/addAddress'
 import MyOrders from './pages/MyOrders'
 import SellerLogin from './components/Seller/SellerLogin'
 import SellerLayout from './pages/Seller/SellerLayout'
@@ -20,6 +19,7 @@ import ProductList from './pages/Seller/ProductList'
 import Orders from './pages/Seller/Orders'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import AddAddress from './pages/AddAddress'
 
 const App = () => {
 
